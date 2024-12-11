@@ -1,17 +1,16 @@
+import 'package:codesh_challenger/dictionary/model/meaning.dart';
+
 class Word {
   late String word;
-  late String phonetic;
-  late String origin;
+  List<Meaning> meanings = [];
 
   Word({
     this.word = '',
-    this.phonetic = '',
-    this.origin = '',
   });
 
   Word.fromJson({required Map<String, dynamic> json}){
+    List dados = json['meanings'];
     word = json['word'];
-    phonetic = json['phonetic'];
-    origin = json['origin'];
+    meanings = dados.map((e) => Meaning.fromJson(json: e)).toList();
   }
 }
